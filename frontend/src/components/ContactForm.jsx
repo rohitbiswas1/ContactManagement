@@ -33,6 +33,7 @@ function ContactForm({ onSubmit }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -43,16 +44,19 @@ function ContactForm({ onSubmit }) {
     setStatusMessage('');
 
     try {
-      const response = await fetch('/api/contacts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/contacts`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         setStatusMessage('Contact added successfully');
         setFormData({ name: '', email: '', phone: '', message: '' });
-        onSubmit();
+        onSubmit && onSubmit();
         firstInputRef.current?.focus();
       } else {
         const err = await response.json().catch(() => ({}));
