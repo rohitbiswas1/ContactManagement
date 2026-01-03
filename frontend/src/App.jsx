@@ -15,7 +15,9 @@ function App() {
   const fetchContacts = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/contacts');
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/contacts`
+      );
       const data = await response.json();
       setContacts(data || []);
     } catch (error) {
@@ -34,12 +36,15 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>Contact Management</h1>
-        
       </header>
 
       <main className="app-grid">
         <ContactForm onSubmit={handleFormSubmit} />
-        <ContactList contacts={contacts} onDelete={handleFormSubmit} loading={loading} />
+        <ContactList
+          contacts={contacts}
+          onDelete={handleFormSubmit}
+          loading={loading}
+        />
       </main>
     </div>
   );
