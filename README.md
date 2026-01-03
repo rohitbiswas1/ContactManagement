@@ -337,8 +337,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need help, please:
 - Open an [Issue](https://github.com/rohitbiswas1/ContactManagement/issues)
-- Email: *your-email@example.com* *(Add your email)*
-
+- Email: *rohitbiswasiam@gmail.com*
 ---
 
 ## 🗺️ Roadmap
